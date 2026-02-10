@@ -1,0 +1,209 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+	<meta charset="utf-8">
+	<!-- Meta tags for social media banners, these should be filled in appropriatly as they are your "business card" -->
+	<!-- Replace the content tag with appropriate information -->
+
+	<meta name="description" content="DESCRIPTION META TAG">
+	<meta property="og:title" content="SOCIAL MEDIA TITLE TAG" />
+	<meta property="og:description" content="SOCIAL MEDIA DESCRIPTION TAG TAG" />
+	<meta property="og:url" content="URL OF THE WEBSITE" />
+	<!-- Path to banner image, should be in the path listed below. Optimal dimenssions are 1200X630-->
+	<meta property="og:image" content="static/image/your_banner_image.png" />
+	<meta property="og:image:width" content="1200" />
+	<meta property="og:image:height" content="630" />
+
+
+	<meta name="twitter:title" content="TWITTER BANNER TITLE META TAG">
+	<meta name="twitter:description" content="TWITTER BANNER DESCRIPTION META TAG">
+	<!-- Path to banner image, should be in the path listed below. Optimal dimenssions are 1200X600-->
+	<meta name="twitter:image" content="static/images/your_twitter_banner_image.png">
+	<meta name="twitter:card" content="summary_large_image">
+	<!-- Keywords for your paper to be indexed by-->
+	<meta name="keywords" content="KEYWORDS SHOULD BE PLACED HERE">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+
+	<script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
+    <script id="MathJax-script" async src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+
+
+	<title> Prosody Enhanced LLM-Based TTS with Dynamic Prosody Token </title>
+	<link rel="icon" type="image/x-icon" href="static/images/favicon.io">
+	<link href="https://fonts.googleapis.com/css?family=Google+Sans|Noto+Sans|Castoro" rel="stylesheet">
+
+	<link rel="stylesheet" href="static/css/bulma.min.css">
+	<link rel="stylesheet" href="static/css/bulma-carousel.min.css">
+	<link rel="stylesheet" href="static/css/bulma-slider.min.css">
+	<link rel="stylesheet" href="static/css/fontawesome.all.min.css">
+	<link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/jpswalsh/academicons@1/css/academicons.min.css">
+	<link rel="stylesheet" href="static/css/index.css">
+
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+	<script src="https://documentcloud.adobe.com/view-sdk/main.js"></script>
+	<script defer src="static/js/fontawesome.all.min.js"></script>
+	<script src="static/js/bulma-carousel.min.js"></script>
+	<script src="static/js/bulma-slider.min.js"></script>
+	<script src="static/js/index.js"></script>
+</head>
+
+
+<body>
+	<div class="container py-5">
+        <div class="paper-container p-4 p-md-5">
+            <!-- 标题部分 -->
+            <div class="text-center mb-5">
+                <h1 class="header-title">DuraMark: A Robust Speech Watermarking in Duration-Controllable TTS</h1>
+                <div class="authors">
+                    <p class="mb-1">Zhenwei Mou<sup>1</sup>, Liping Chen<sup>1</sup>, Zhen-Hua Ling<sup>1</sup>, Kong Aik<sup>2</sup></p>
+                    <p class="author-affiliation mb-0">
+                        <sup>1</sup>University of Science and Technology of China, China, <sup>2</sup>The Hong Kong Polytechnic University, China
+                    </p>
+					<p class="author-affiliation mb-0">
+                        Emails: zwmu@mail.ustc.edu.cn, {lipchen, zhling}@ustc.edu.cn, kong-aik.lee@polyu.edu.hk
+                    </p>
+                </div>
+                <div class="mt-3">
+                    <span class="badge bg-primary me-1">speech watermarking</span>
+                    <span class="badge bg-secondary me-1">duration-based watermarking</span>
+                    <span class="badge bg-success me-1">robustness</span>
+                    <span class="badge bg-info">duration-controllable TTS</span>
+                </div>
+            </div>
+
+            <!-- 摘要部分 -->
+            <h3 class="section-title">Abstract</h3>
+            <div class="abstract-box">
+                <p>Large-scale text-to-speech (TTS) models have achieved remarkable voice cloning capabilities, raising concerns about potential misuse such as unauthorized replication and deepfakes. Speech watermarking serves as a pivotal solution by embedding traceable information into generated speech. However, existing methods typically embed information in the signal domain (waveform or spectrogram), rendering them vulnerable to neural network-based resynthesis (e.g., neural codecs and vocoders). To address this, we propose DuraMark, a robust generative watermarking framework at the information level. It utilizes syllable duration modulation to achieve watermark embedding. Specifically, DuraMark integrates a duration-controllable TTS model to manipulate the duration of individual syllables during synthesis, coupled with a duration detector to identify these specific patterns for watermark detection. Experimental results demonstrate the superior robustness of our method, particularly against challenging neural resynthesis attacks, significantly outperforming state-of-the-art signal-level baselines while maintaining high speech naturalness. </p>
+            </div>
+
+            <h3 class="section-title">Model Architecture</h3>
+			<div class="container-fluid">
+
+				<div class="mb-5">
+					<div class="row justify-content-center align-items-end">
+						
+						<div class="col px-1 text-center" style="flex: 0 0 45%; max-width: 45%;">
+							<img src="data/tts.png" class="img-fluid" alt="Duration-controllable TTS">
+							<p class="small text-muted mt-1">(a) Duration-controllable TTS.</p>
+						</div>
+						
+						<div class="col px-1 text-center" style="flex: 0 0 31%; max-width: 31%;">
+							<img src="data/detector.png" class="img-fluid" alt="Duration detector">
+							<p class="small text-muted mt-1">(b) Duration detector.</p>
+						</div>
+						
+						<div class="col px-1 text-center" style="flex: 0 0 20%; max-width: 20%;">
+							<img src="data/control.png" class="img-fluid" alt="Duration control">
+							<p class="small text-muted mt-1">(c) Duration control.</p>
+						</div>
+					</div>
+					
+					<p class="text-center mt-2">Fig. 2 Overall architecture of the proposed DuraMark.</p>
+				</div>
+
+				<div class="text-center mb-5">
+					<img src="data/watermark.png" class="img-fluid model-image" alt="Watermark embedding and detection" style="max-width: 48%; margin: 0 auto; display: block;">
+					
+					<p class="text-center mt-2">Fig. 1 Illustration of the watermark embedding and detection processes in DuraMark.</p>
+				</div>
+
+			</div>
+			<h3 class="section-title">Results</h3>
+
+			<p>Evaluation was performed on the Chinese AISHELL-3 test set. We compared DuraMark against three state-of-the-art signal-level baselines: AudioSeal, Timbre and WavMark.</p>
+
+			<div class="container pt-5 mt-5 shadow p-5 mb-5 bg-white rounded">
+				<table class="table table-hover pt-2">
+					<h4 class="text-center">AISHELL-3</h4>
+					<thead>
+						<tr>
+							<th style="text-align: center">Text</th>
+							<th style="text-align: center">Unwatermarked</th>
+							<th style="text-align: center">AudioSeal</th>
+							<th style="text-align: center">Timbre</th>
+							<th style="text-align: center">WavMark</th>
+							<th style="text-align: center">DuraMark</th>
+						</tr>
+					</thead>
+
+					<tbody>
+						<tr>
+							<td style="text-align: left; vertical-align:middle; width: 300px">但是他们会想方设法的，从我们口里面逼出证据。</td>
+							<td style="text-align: center; vertical-align:middle"><audio controls style="width: 150px;"><source src="data/speech/unwatermarked/0013.wav"></audio></td>
+							<td style="text-align: center; vertical-align:middle"><audio controls style="width: 150px;"><source src="data/speech/audioseal/0013_1111111011111101.wav"></audio></td>
+							<td style="text-align: center; vertical-align:middle"><audio controls style="width: 150px;"><source src="data/speech/timbre/0013_111111101111110101011010010001_24.355.wav"></audio></td>
+							<td style="text-align: center; vertical-align:middle"><audio controls style="width: 150px;"><source src="data/speech/wavmark/0013_1110111110010110_37.794.wav"></audio></td>
+							<td style="text-align: center; vertical-align:middle"><audio controls style="width: 150px;"><source src="data/speech/duramark/0013_01000101.wav"></audio></td>
+						</tr>
+
+						<tr>
+							<td style="text-align: left; vertical-align:middle; width: 300px">那个激情酒吧，是个服食倒卖摇头丸的一个窝点。</td>
+							<td style="text-align: center; vertical-align:middle"><audio controls style="width: 150px;"><source src="data/speech/unwatermarked/0229.wav"></audio></td>
+							<td style="text-align: center; vertical-align:middle"><audio controls style="width: 150px;"><source src="data/speech/audioseal/0229_1010010001101000.wav"></audio></td>
+							<td style="text-align: center; vertical-align:middle"><audio controls style="width: 150px;"><source src="data/speech/timbre/0229_101001000110100000111001100011_24.856.wav"></audio></td>
+							<td style="text-align: center; vertical-align:middle"><audio controls style="width: 150px;"><source src="data/speech/wavmark/0229_0101011000111101_38.341.wav"></audio></td>
+							<td style="text-align: center; vertical-align:middle"><audio controls style="width: 150px;"><source src="data/speech/duramark/0229_00001000.wav"></audio></td>
+						</tr>
+
+						<tr>
+							<td style="text-align: left; vertical-align:middle; width: 300px">原来大三元的下面就是霹雳堂啊，怪不得我穿红裤衩儿都会输钱。</td>
+							<td style="text-align: center; vertical-align:middle"><audio controls style="width: 150px;"><source src="data/speech/unwatermarked/0251.wav"></audio></td>
+							<td style="text-align: center; vertical-align:middle"><audio controls style="width: 150px;"><source src="data/speech/audioseal/0251_1110100101010011.wav"></audio></td>
+							<td style="text-align: center; vertical-align:middle"><audio controls style="width: 150px;"><source src="data/speech/timbre/0251_111010010101001110111110101000_25.133.wav"></audio></td>
+							<td style="text-align: center; vertical-align:middle"><audio controls style="width: 150px;"><source src="data/speech/wavmark/0251_0010110010101111_37.629.wav"></audio></td>
+							<td style="text-align: center; vertical-align:middle"><audio controls style="width: 150px;"><source src="data/speech/duramark/0251_11000101.wav"></audio></td>
+						</tr>
+
+						<tr>
+							<td style="text-align: left; vertical-align:middle; width: 300px">此时手机响起，医生才知道妻女被绑架，唯有亚当死才能救家人。</td>
+							<td style="text-align: center; vertical-align:middle"><audio controls style="width: 150px;"><source src="data/speech/unwatermarked/0283.wav"></audio></td>
+							<td style="text-align: center; vertical-align:middle"><audio controls style="width: 150px;"><source src="data/speech/audioseal/0283_1100110011110011.wav"></audio></td>
+							<td style="text-align: center; vertical-align:middle"><audio controls style="width: 150px;"><source src="data/speech/timbre/0283_110011001111001111010010100000_25.651.wav"></audio></td>
+							<td style="text-align: center; vertical-align:middle"><audio controls style="width: 150px;"><source src="data/speech/wavmark/0283_1001101011100111_38.051.wav"></audio></td>
+							<td style="text-align: center; vertical-align:middle"><audio controls style="width: 150px;"><source src="data/speech/duramark/0283_01110000.wav"></audio></td>
+						</tr>
+
+						<tr>
+							<td style="text-align: left; vertical-align:middle; width: 300px">昨天看到的洛爷挖的那座遍布鱼鳞的坟坑儿，就是八古转坟坑儿。</td>
+							<td style="text-align: center; vertical-align:middle"><audio controls style="width: 150px;"><source src="data/speech/unwatermarked/0418.wav"></audio></td>
+							<td style="text-align: center; vertical-align:middle"><audio controls style="width: 150px;"><source src="data/speech/audioseal/0418_0001100100001100.wav"></audio></td>
+							<td style="text-align: center; vertical-align:middle"><audio controls style="width: 150px;"><source src="data/speech/timbre/0418_000110010000110010100100000001_25.764.wav"></audio></td>
+							<td style="text-align: center; vertical-align:middle"><audio controls style="width: 150px;"><source src="data/speech/wavmark/0418_1100111100111110_37.250.wav"></audio></td>
+							<td style="text-align: center; vertical-align:middle"><audio controls style="width: 150px;"><source src="data/speech/duramark/0418_00001000.wav"></audio></td>
+						</tr>
+
+						<tr>
+							<td style="text-align: left; vertical-align:middle; width: 300px">不能让他们再这样乱下去了，我想了想，抬手让大家先安静下来。</td>
+							<td style="text-align: center; vertical-align:middle"><audio controls style="width: 150px;"><source src="data/speech/unwatermarked/0530.wav"></audio></td>
+							<td style="text-align: center; vertical-align:middle"><audio controls style="width: 150px;"><source src="data/speech/audioseal/0530_0110110010100011.wav"></audio></td>
+							<td style="text-align: center; vertical-align:middle"><audio controls style="width: 150px;"><source src="data/speech/timbre/0530_011011001010001110000000111110_25.195.wav"></audio></td>
+							<td style="text-align: center; vertical-align:middle"><audio controls style="width: 150px;"><source src="data/speech/wavmark/0530_1111010010011101_37.684.wav"></audio></td>
+							<td style="text-align: center; vertical-align:middle"><audio controls style="width: 150px;"><source src="data/speech/duramark/0530_10001110.wav"></audio></td>
+						</tr>
+					</tbody>
+				</table>
+			</div>
+
+			
+
+
+			<!-- 配置MathJax -->
+			<script>
+				window.MathJax = {
+					tex: {
+						inlineMath: [['$', '$'], ['\\(', '\\)']],
+						displayMath: [['$$', '$$'], ['\\[', '\\]']],
+						processEscapes: true,
+						processEnvironments: true
+					},
+					options: {
+						skipHtmlTags: ['script', 'noscript', 'style', 'textarea', 'pre']
+					}
+				};
+			</script>
+
+</body>
+
+</html>
